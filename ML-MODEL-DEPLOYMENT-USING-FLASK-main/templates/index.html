@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction avec Flask</title>
+    
+    <!-- Inclure Bootstrap pour un style moderne -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Inclure Google Fonts pour des polices personnalisées -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles personnalisés -->
+    <style>
+        /* Utilisation de la police Google Font */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+        
+        /* Conteneur centré */
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        /* Styles de formulaire */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        /* Styles des champs d'entrée */
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        
+        /* Effet de focus sur les champs d'entrée */
+        input[type="text"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        
+        /* Style du bouton de soumission */
+        button[type="submit"] {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Bouton hover */
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        
+        /* Section de prédiction */
+        .prediction {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e7f3ff;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">Prédiction avec Flask</h1>
+        
+        <!-- Formulaire pour la prédiction -->
+        <form action="/predict" method="POST">
+            <div class="mb-3">
+                <label for="humidite" class="form-label">Humidité</label>
+                <input type="text" class="form-control" id="humidite" name="Humidite" required>
+            </div>
+            <div class="mb-3">
+                <label for="proteine" class="form-label">Protéine</label>
+                <input type="text" class="form-control" id="proteine" name="Proteine" required>
+            </div>
+            <div class="mb-3">
+                <label for="Durete" class="form-label">Durete</label>
+                <input type="text" class="form-control" id="Durete" name="Durete" required>
+            </div>
+            <div class="mb-3">
+                <label for="aw" class="form-label">Aw</label>
+                <input type="text" class="form-control" id="aw" name="Aw" required>
+            </div>
+            <div class="mb-3">
+                <label for="fine" class="form-label">Fine</label>
+                <input type="text" class="form-control" id="fine" name="Fine" required>
+            </div>
+            <div class="mb-3">
+                <label for="cendre" class="form-label">Cendre</label>
+                <input type="text" class="form-control" id="cendre" name="Cendre" required>
+            </div>
+            <div class="mb-3">
+                <label for="fibre" class="form-label">Fibre</label>
+                <input type="text" class="form-control" id="fibre" name="Fibre" required>
+            </div>
+            <div class="mb-3">
+                <label for="amidon" class="form-label">Amidon</label>
+                <input type="text" class="form-control" id="amidon" name="Amidon" required>
+            </div>
+            
+            <!-- Bouton de soumission -->
+            <button type="submit" class="btn btn-primary">Prédire</button>
+        </form>
+        
+        <!-- Section pour afficher la prédiction -->
+        <div id="prediction-text" class="prediction">
+            {% if prediction_text %}
+            {{ prediction_text }}
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Inclure les scripts Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+    
+</body>
+
+</html>
